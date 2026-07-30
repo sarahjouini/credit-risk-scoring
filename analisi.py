@@ -16,3 +16,13 @@ def assegna_rischio(rapporto):
 df["rischio"] = df["rapporto_debiti"].apply(assegna_rischio)
 
 print(df[["nome_azienda", "rapporto_debiti", "rischio"]].head(10))
+def punti_ritardo(giorni):
+    if giorni < 30:
+        return 0
+    elif giorni < 90:
+        return 1
+    else:
+        return 2
+df["punti_ritardo"] = df["ritardo_medio_pagamenti"].apply(punti_ritardo)
+
+print(df[["nome_azienda", "ritardo_medio_pagamenti", "punti_ritardo"]].head(10))
